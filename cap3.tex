@@ -1,0 +1,97 @@
+\chapter{Diseño}
+	En esta sección se lleva a cabo el proceso de diseño de la solución. El objetivo de la fase de diseño es explorar y evaluar -para cada elemento de la solución- los posibles métodos y herramientas de solución y elegir con base en los méritos de cada una, aquella que sea factible y se apegue de mejor manera a los requerimientos establecidos en el capitulo anterior. Al concluir este capitulo, se debe contar con un "plan de acción" detallado sobre la solución que se implementará en el capítulo 4.
+
+	En el capitulo introductorio se definió que el objetivo del trabajo es el diseño e implementación de una plataforma estilo "marketplace" que tenga la capacidad de evaluar la compatibilidad de parejas vacante-candidato registradas en la misma. Partiendo de la premisa anterior y con la finalidad de compartimentar el desarrollo del sistema, se subdividió la solución en una serie de decisiones de diseño que en su conjunto conforman la especificación de la plataforma a desarrollar.
+
+	\section{Adquisición de información}
+		Partiendo del objetivo de cuantificar la compatibilidad entre cada pareja vacante-candidato registrada en la plataforma, resulta de suma importancia definir la información que se requiere de cada una de las partes involucradas y la manera en la que esta será obtenida. Por ello, se definieron tres criterios de adquisición de información que la plataforma debe cubrir para poder emitir recomendaciones confiables y accionables de una manera escalable y eficiente.
+
+		\subsubsection{Multidimensionalidad}
+			Un elemento esencial de la hipótesis de este trabajo, es que las evaluaciones unidimensionales de candidatos no proporcionan elementos confiables para estimar la probabilidad de éxito en una posición laboral.
+
+			A partir de esa premisa, se decidió analizar tres dimensiones que permitan caracterizar candidatos holística y objetivamente y con ello tener la capacidad de hacer estimaciones validas de las probabilidades de éxito de cada candidato en cada vacante. Dichas dimensiones se presentan a continuación:
+
+			\begin{itemize}
+			\item \textbf{Perfil demográfico:} En está sección se pretende entender el contexto demográfico y socio-económico de los candidatos. \\
+			Contesta preguntas como: ¿Qué edad suelen tener los vendedores con mejor desempeño? o ¿Qué tan lejos de su trabajo viven los mejores agentes de atención a cliente?  
+			\item \textbf{Perfil psicológico:} Con base en un análisis psicométrico de los candidatos, se busca categorizar y establecer una correlación entre los diversos tipos de personalidad con su desempeño en trabajos específicos. \\Contesta preguntas como: ¿En qué punto de la escala de extroversión suelen encontrarse los mejores fisioterapeutas? o ¿Qué tan buen desempeño puede tener una persona con tendencias neuróticas como sobrecargo en una empresa de aviación comercial?
+			\item \textbf{Capacidad de pensamiento matemático:} En la dimensión matemática, se evalúa la capacidad de los candidatos para interpretar los componentes matemáticos de problemas de la vida real y realizar las operaciones necesarias resolverlos. \\ 
+			Contesta preguntas como: ¿Cual es la habilidad matemática necesaria para sobresalir como cajero en una sucursal bancaria?
+			\end{itemize}
+		\subsubsection{Cuantificabilidad}
+			Una característica crucial del proceso de recopilación de información en nuestro sistema, es que los puntos de información obtenidos sean cuantificables y comparables entre distintas instancias de los mismos. Se consideró inicialmente el uso de información cualitativa como ensayos o campos abiertos para ampliar el rango de consideración de habilidades y aptitudes de los candidatos. Sin embargo, este tipo de información resulta sumamente complicada de analizar y comparar y por ello representaría una importante resistencia a la escalabilidad y confiabilidad del sistema de recomendación de la plataforma.
+
+			Se definió adicionalmente, que todas las empresas y todos los candidatos deberían aportar exactamente los mismos campos de información. A pesar de que quizás resulte más complicado lograr que todos los usuarios llenen todos los campos de información, solo al tener conjuntos de datos idénticos para todos, se pueden hacer evaluaciones realmente objetivas de cada instancia.
+		
+		\subsubsection{Medio de adquisición}
+			Finalmente, se deben considerar los medios que se van a usar para obtener la información que se definió en los puntos anteriores. Es importante especificar procesos que permitan adquirir los datos requeridos de manera práctica, escalable y ética.
+			En la definición de estos procesos, se consideraron tres paradigmas generales de adquisición de información.
+			\begin{enumerate}
+				\item \textbf{Obtención automatizada:} 
+				Se refiere a mecanismos de adquisición de información que no dependen de una persona para ingresar la información al sistema. Algunos ejemplos de estos mecanismos son: "Scraping" de redes sociales, análisis de reportes de evaluación crediticia, análisis de información de uso en equipos móviles, etc.
+				\item \textbf{Obtención manual a través de cuestionarios:}
+				Se refiere a la obtención de datos a través de cuestionarios llenados personalmente por el usuario. Estos pueden ser administrados de manera presencial o remota y de manera física o digital. 
+				\item \textbf{Obtención mixta:}
+				Los métodos de obtención mixta son aquellos que utilizan elementos de las dos categorías anteriores.
+			\end{enumerate}
+			El primer paradigma en ser descartado fue el primero. Estos mecanismos, requieren un menor trabajo por parte de los usuarios y permiten niveles de eficiencia y escalabilidad superiores a los otros métodos estudiados. Sin embargo, los mecanismos de obtención automatizada presentan dos desventajas principales que impiden cumplir con los objetivos y requerimientos de nuestro sistema: El primero, radica en la complejidad de obtener información confiable sin supervisión humana. Debido a la gran cantidad de sistemas externos involucrados y la heterogeneidad en las interacciones humanas en dichos sistemas, resulta sumamente complicado obtener información por estos medios. Por ello, el horizonte temporal y los recursos con los que se cuenta no permiten implementarlos adecuadamente. La segunda desventaja -y quizás más relevante- se encuentra en las implicaciones éticas de la obtención de información sin intervención directa del usuario. A pesar de que se solicitaría a los usuarios autorizar el uso de su información, esto en muchas ocasiones no implica una correcta comprensión de las implicaciones de dicha acción. El contar con acceso a tal cantidad de información -no toda ella útil para nuestros propósitos- puede resultar en una violación a los derechos a la privacidad de los usuarios de la plataforma.\\
+
+			A pesar de existir elementos de información que pueden ser obtenidos por vía automatizada y no cuentan con la primer desventaja, se consideró que las implicaciones de la segunda eran de tal magnitud, que tomando en cuenta el alcance y objetivos de este proyecto, debían descartarse de igual manera los mecanismos mixtos de obtención de información \\
+
+			Dado lo anterior, se tomó la decisión de utilizar exclusivamente métodos manuales a través de cuestionarios. Y en función de la necesidad de confiabilidad y escalabilidad, se optó por aquellos que funcionan por medios digitales y exclusivamente a través de la plataforma misma.
+
+	\section{Tipo de aplicación}
+		El primer paso fue decidir el tipo de aplicación que se desarrollaría para montar la plataforma deseada. Para ello consideraron tres alternativas:
+		\begin{enumerate}[(a)] 	
+		    \item Aplicación de escritorio:
+		    	Es un tipo de aplicación que se ejecuta directamente sobre el sistema operativo de una computadora de escritorio o portátil y no necesita de un navegador para su operación.
+		    \item Aplicación móvil:
+		    	Es similar a una aplicación de escritorio, pero es nativa a un sistema operativo móvil como iOS o Android. 
+		    \item Aplicación web:
+		    	Es una aplicación que se ejecuta directamente sobre un navegador web sin tomar en consideración el sistema operativo sobre el que este se está ejecutando.
+		\end{enumerate}
+		Los beneficios de utilizar cualquiera de las primeras dos opciones radican en una utilización más eficiente de los recursos del dispositivo y la reducción en la cantidad de información intercambiada entre el cliente y el servidor. Sin embargo, se decidió utilizar una aplicación web, por que de esa manera, todos los usuarios pueden utilizar la misma aplicación sin importar el dispositivo desde el cual accedan a ella. Esto permite que nuestra solución se ajuste a las restricciones de tiempo de desarrollo anteriormente establecidas y ofrezca servicio al mayor número posible de usuarios potenciales. 
+
+	\section{Lenguaje de programación y "framework" de desarrollo}
+		Una vez definido el tipo de aplicación a desarrollar, se procedió a definir el lenguaje de programación en el cual se implementaría la solución. Con el objetivo de cumplir con las restricciones de tiempo y presupuesto, únicamente se tomaron en cuenta tres lenguajes de código abierto con los que el autor tenía experiencia previa: R, Java y Python.
+			\begin{itemize}
+				\item \textbf{R}: Desarrollado específicamente para computo estadístico y visualización de datos. \\
+					\textbf{Ventajas:} Su enfoque estadístico lo hace ideal para el procesamiento de los datos ingresados por los usuarios y la generación de calificaciones de compatibilidad.\\ 
+					\textbf{Desventajas:} Al no ser un lenguaje de propósito general, resulta complejo integrarlo con el resto del "Stack" de desarrollo. Adicionalmente, no cuenta con las características requeridas para un desarrollo web adecuado, por lo que tendría que usarse un segundo lenguaje para esa sección e integrarlos posteriormente.
+				\item \textbf{Java}: Es el lenguaje de propósito general más utilizado en el mundo para desarrollo de aplicaciones web y su funcionamiento está optimizado para este fin \\
+					\textbf{Ventajas:} Es un lenguaje relativamente eficiente y cuenta con una amplia y desarrollada comunidad de desarrolladores, por lo que se cuenta con un número extenso de librerías y herramientas que podrían contribuir a un desarrollo sencillo y confiable. \\
+					\textbf{Desventajas:} No es un lenguaje comúnmente utilizado para el manejo y análisis de datos, por lo que tendría que integrarse con otro lenguaje especializado para cumplir con los objetivos de nuestra solución.
+				\item \textbf{Python}: Lenguaje de propósito general de alto nivel con un enfoque hacía la simplicidad del código. Adoptado de manera importante por la comunidad de análisis de datos y con soporte hacía funcionalidades de desarrollo web\\
+					\textbf{Ventajas:} Cuenta con una amplia oferta de librerías y "frameworks" de desarrollo que permiten utilizarlo satisfactoriamente tanto para análisis de datos como para desarrollo web \\
+					\textbf{Desventajas:} Es computacionalmente ineficiente en relación a otros lenguajes de propósito general como Java o C, por lo que puede afectar el desempeño de nuestro sistema.
+			\end{itemize}
+		Tomando en cuenta las características presentadas, se decidió utilizar Python para el desarrollo integral de nuestra solución. Lo anterior, debido a que utilizar un solo lenguaje de programación facilita la integración de los distintos elementos del sistema y Python cuenta con las características requeridas para cumplir con todos los requerimientos establecidos anteriormente.
+
+		Para el desarrollo de la aplicación web con Python, se decidió utilizar el "framework" de desarrollo Flask. Flask es un "framework" minimalista que provee las funcionalidades mínimas requeridas para el correcto funcionamiento de una aplicación web. Se decidió utilizarlo porque sus características permiten cumplir con el alcance de este proyecto y dado que el autor contaba con experiencia previa utilizándolo, resultó la mejor opción para poder cumplir con el estrecho limite temporal que se definió en las restricciones del proyecto.
+
+	\section{Base de datos}
+		La decisión de la tecnología de base de datos a usarse, se basó principalmente en la restricción de tiempo del proyecto. Debido también a la naturaleza de la información a manejarse, se consideró que no era necesario un análisis realmente profundo de los méritos de todas las opciones disponibles, por lo que se optó por utilizar el sistema de manejo de bases de datos relacionales \textbf{Postgresql:}. Posteriormente, se creo una instancia basada en dicha tecnología en la plataforma de servicios de bases de datos en la nube \textbf{Amazon RDS:}.
+		La arquitectura propuesta para la base de datos es la siguiente:
+		\includegraphics[scale=.5]{tesisDB}
+
+	\section{Plataforma de cómputo en la nube}
+		Para el despliegue de la plataforma en internet, se consideraron dos opciones principales. La primera fue la nube de computo elástico de Amazon. La segunda, fue la plataforma de servicios en la nube Heroku. En términos de desempeño, las características son similares, pues la plataforma de Heroku se encuentra a su vez, albergada en los servidores de la nube de Amazon. La diferencia relevante es que la plataforma de Heroku ofrece una versión simplificada del sistema. La implementación de Heroku, no permite una parte importante de las opciones de personalización que Amazon provee, pero a cambio ofrece un ambiente más amigable y sencillo de usar. Finalmente, se decidió por usar la plataforma de Heroku, por que por un lado contribuye a la conclusión del presente proyecto en tiempo y por el otro, ofrece las funcionalidades básicas requeridas por esta solución sin costo, lo que permite desarrollar el sistema dentro de las restricciones de presupuesto impuestas en las restricciones iniciales.
+
+	\section{Algoritmo de estimación}
+		El algoritmo de estimación es el elemento más relevante del sistema, pues serán los resultados arrojados por el mismo los que determinen si la plataforma es exitosa en la resolución de los objetivos planteados o no lo es. 
+
+		Para el diseño de este elemento, se consideraron dos enfoques: 
+		\begin{enumerate}[(a)] 	
+		    \item \textbf{Modelo de distancias vectoriales:}
+		    	En este modelo se calcula la distancia entre los vectores característicos de cada pareja candidato-vacante y la calificación de compatibilidad es una función de que tan cercanos se encuentran entre ellos.
+		    	\textbf{Ventajas:} La ventaja principal de este enfoque es su simplicidad, pues resulta sumamente fácil de construir y de explicar, lo que permite que las soluciones sean transparentes y comprensibles para los usuarios.\\ 
+				\textbf{Desventajas:} Su efectividad es limitada por su incapacidad de incorporar adecuadamente la información adquirida a través de los resultados obtenidos en recomendaciones anteriores.
+		    \item \textbf{Modelo de regresión logística:}
+		    	El modelo de regresión logística estima la probabilidad de éxito de un candidato particular en una vacante específica con base en los resultados obtenidos en recomendaciones anteriores.
+		    	\textbf{Ventajas:} Este modelo permite estimaciones más precisas que el calculado con distancias vectoriales. Al incorporar la información generada por recomendaciones anteriores, su efectividad aumenta en función del uso de la plataforma.\\ 
+				\textbf{Desventajas:} La efectividad del modelo depende de una base de datos inicial que permita crear la configuración inicial del sistema. Adicionalmente, el modelo puede resultar opaco para los usuarios y afectar la credibilidad y adopción de la plataforma.
+		\end{enumerate}
+
+		Se decidió utilizar un modelo híbrido que incorpora algunas de las ventajas de ambos modelos. En el núcleo de la solución, será el modelo logístico el que generé las estimaciones de compatibilidad, pero se apoyara del modelo de distancias vectorial para generar las disposiciones iniciales del modelo.
+
+		Las características específicas del modelo serás definidas y explicadas a profundidad en el siguiente capítulo y sus resultados justificados y analizados en el capítulo 5.

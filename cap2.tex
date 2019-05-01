@@ -1,0 +1,147 @@
+\chapter{Análisis}
+La presente sección tiene 3 objetivos principales. El primero es describir los requerimientos esenciales que la solución debe cubrir para cumplir satisfactoriamente con los objetivos del trabajo. El segundo, radica en presentar las restricciones que se deben tomar en cuenta durante el diseño de la solución. Finalmente, el tercer objetivo es presentar algunas soluciones relacionadas que existen en la actualidad.
+
+\section{Requerimientos}
+Para facilitar la presentación de los requerimientos de la solución, estos fueron divididos en tres clases: Requerimientos de usuario, funcionales y de desempeño. En cada sub-sección se dará una breve explicación del alcance de cada categoría.
+
+\subsection{Requerimientos de usuario}
+Los requerimientos de usuario son aquellos que describen acciones que los usuarios deben poder realizar utilizando la plataforma.
+El problema presentado tiene dos clases de usuarios distintas y bien delimitadas, por lo que existen dos grupos de requerimientos que representan las necesidades de cada una de ellas.
+\subsubsection{Requerimientos de usuario empresarial}
+\begin{itemize}
+  Para que el sistema sea útil para los usuarios empresariales, es imprescindible que puedan realizar las siguientes acciones:
+    \item Ingresar al sitio web de la plataforma desde cualquier dispositivo con una conexión a internet
+    \item Crear una cuenta de usuario empresarial, ingresando la información de la empresa en cuestión.
+    \item Crear una vacante asociada a una cuenta empresarial, ingresando la información especifica a la vacante
+    \item Visualizar todas las vacantes previamente creadas, acompañadas de su información básica
+    \item Visualizar el detalle de una vacante especifica, con una lista de todas las candidatos que mostraron interés en ella y una calificación de compatibilidad para cada una de ellas
+    \item Mostrar interés en un candidato que previamente mostró interés en cubrir la vacante anunciada y de manera subsecuente, recibir su información de contacto
+\end{itemize}
+\subsubsection{Requerimientos de usuario particular (candidato)}
+\begin{itemize}
+  Para que el sistema sea útil para los usuarios particulares en busca de un empleo, es imprescindible que puedan realizar las siguientes acciones:
+    \item Ingresar al sitio web de la plataforma desde cualquier dispositivo con una conexión a internet
+    \item Crear una cuenta de usuario candidato, ingresando su información personal.
+    \item Visualizar todas las vacantes disponibles, acompañadas de su información y de una calificación de compatibilidad para cada una de ellas
+    \item Mostrar interés en una vacante específica
+\end{itemize}
+
+\subsection{Requerimientos funcionales}
+Los requerimientos funcionales son aquellos que describen operaciones o actividades especificas que el sistema debe ser capaz de realizar.
+\begin{itemize}
+  Para que el sistema cumpla con los objetivos descritos en la introducción, es imprescindible que pueda realizar las siguientes funciones:
+    \item Leer y escribir en una base de datos almacenada remotamente
+    \item Establecer conexiones remotas con clientes a través de internet
+    \item Calcular, con base en los datos ingresados por los usuarios, las calificaciones de compatibilidad para cada par candidato-vacante registrado en la plataforma
+    \item Generar y mostrar una interfaz gráfica la información solicitada por los usuarios y establecida en los requerimientos de usuario
+\end{itemize}
+
+\subsection{Requerimientos de desempeño}
+Los requerimientos de desempeño se refieren a los límites aceptables que se establecen para las diversas métricas de desempeño que se monitorean en la operación del sistema
+\begin{itemize}
+  El sistema debe alcanzar los siguientes parámetros de desempeño para considerar que cumple con los objetivos planteados:
+    \item Establecer la conexión cliente-servidor y la totalidad del contenido en menos de 1 segundo para todas las operaciones que no impliquen cálculos de compatibilidad
+    \item Establecer la conexión cliente-servidor y la totalidad del contenido en menos de 5 segundos para todas las operaciones que impliquen cálculos de compatibilidad
+    \item Tener niveles de disponibilidad superiores a 99.9\% bajo condiciones de congestión normales
+    \item Soportar 100 conexiones simultaneas (Condición de congestión normal)
+\end{itemize}
+
+\section{Restricciones}
+El desarrollo de una aplicación abierta al público en general requiere una serie de recursos que dado el contexto en el que se desarrolla este proyecto pueden resultar fuera del área de posibilidad. El objetivo de esta sección es describir las restricciones que se deben tomar en cuenta en el diseño de la solución. En palabras sencillas, las restricciones representan la distancia entre la solución ideal y una solución factible dados los recursos disponibles.
+Las restricciones que se identificaron en el análisis de este problema son las siguientes:
+
+\subsection{Tiempo}
+La restricción principal en el desarrollo de la presente solución es el tiempo. Debido a la naturaleza de un trabajo de titulación, se cuenta con un horizonte temporal de 16 semanas para desarrollar el sistema en su totalidad y escribir el presente reporte. 
+
+Como consecuencia, la toma de decisiones con respecto a las herramientas y/o métodos a utilizar, debe partir de la condición de que se encuentre disponible inicialmente o se pueda adquirir en un tiempo razonable. 
+
+Si bien lo anterior limita de manera importante las decisiones de diseño, bajo ciertas condiciones puede resultar beneficial para el proyecto a largo plazo; pues al generar una versión funcional en un tiempo limitado, se puede incorporar fácilmente la retroalimentación de los usuarios para el desarrollo de iteraciones futuras.
+
+\subsection{Recursos monetarios}
+De manera similar, los recursos monetarios disponibles representan una restricción importante para el diseño e implementación del presente trabajo. Se define un limite de presupuesto de \$100 dolares americanos para la totalidad de los recursos adquiridos. Lo anterior implica que se utilizaran -en su mayoría- herramientas de código abierto y elementos desarrollados de manera autónoma. 
+
+\subsection{Competencia digital}
+Para el diseño de la solución propuesta, se debe tomar en cuenta que el producto está dirigido a un grupo poblacional con niveles altamente variables de competencia digital, por lo que las interfaces debe ser comprensibles y accesibles para el espectro completo de usuarios. 
+
+\subsection{Disposición y motivación en los usuarios}
+Una restricción mas que debe ser tomada en cuenta es la disposición de los usuarios para destinar tiempo al uso de la plataforma. Dado lo anterior, se define que el proceso completo de registro en la aplicación debe tomar menos de 20 minutos, desde el ingreso a la plataforma y hasta la recepción de la primera recomendación o primera alta de vacante para candidatos y empresas respectivamente. 
+
+\section{Soluciones relacionadas}
+  Tomando en cuenta el tamaño del problema y la importancia de su solución, resulta natural que exista un número importante de personas y organizaciones en el mundo tratando de encontrar una solución. A continuación, se presentan algunas de las soluciones existentes y se tratará de analizar sus ventajas y desventajas principales. Es importante recalcar que no se pretende exponer una lista exhaustiva de todas las opciones disponibles; el objetivo de esta sección es analizar algunos de los esfuerzos que ya se han hecho o se están haciendo y de los cuales se parte para el desarrollo del presente trabajo.
+  \begin{itemize}
+    \item[$\blacksquare$] 
+    \begin{flushleft}
+    \textbf{“Online marketplace”}
+    \end{flushleft}
+    \linebreak
+  El modelo de “online marketplace” consiste de una plataforma digital por medio de la cual pueden encontrarse personas en busca de un empleo y empresas en busca de talento. Aunque existen una gran variedad de estas plataformas, las más importantes se centran en los empleadores; a los que se les cobra una tarifa fija por acceder a los datos de aquellas personas en busca de empleo que se registran en la plataforma. Estás plataformas regularmente ofrecen la posibilidad de filtrar los resultados de acuerdo a ciertos elementos reportados por los mismos aspirantes al momento de su registro.
+  Algunos ejemplos de este tipo de plataformas son monster.com, OCCmundial.com, Computrabajo.com y Indeed.com
+  \linebreak
+  \linebreak
+  \textbf{Ventajas:} 
+  \begin{itemize}
+    \item  Estas plataformas permiten a las empresas acceder a un extenso acervo de perfiles de aspirantes por un costo relativamente bajo
+    \item  De la misma forma, las aspirantes tienen acceso a un importante número de vacantes de entre las cuales pueden elegir la que más se ajuste a sus necesidades e intereses
+  \end{itemize}
+
+  \textbf{Desventajas}
+  \begin{itemize}
+    \item Requieren información muy limitada sobre los usuarios de sus plataformas, por lo que tienen capacidades muy limitadas de recomendación y conforme su base de usuarios crece, las listas de recomendación resultan ruidosas e imposibles de navegar; especialmente para los candidatos en busca de empleos
+    \item  Los campos de información provistos por las aspirantes y empresas no son consistentes, por lo que resulta complicado hacer una comparación objetiva entre las opciones disponibles
+  \end{itemize}
+
+
+    \item[$\blacksquare$]
+    \begin{flushleft}
+    \textbf{Redes sociales}
+    \end{flushleft}
+    \linebreak
+  Las redes sociales han tenido un crecimiento importante como herramientas de búsqueda de empleo. En estas plataformas, se busca una relación de más largo plazo con los individuos; es decir, a diferencia de las plataformas “marketplace” no se limita a la transacción de búsqueda de un empleo sino que busca ser el lugar en donde las personas tienen su perfil profesional de manera permanente. En las redes sociales con funcionalidad de búsqueda de empleo, el usuario individual crea un perfil en donde muestra información acerca de si mismo, sus habilidades y su experiencia. El usuario tiene la posibilidad de conectar -y de esta manera compartir su perfil- con otras personas registradas en la plataforma. Es como consecuencia de esas conexiones que los empleadores -quienes tienen un perfil especial que les permite buscar personas en busca de empleos- pueden contactar a personas afines a sus necesidades de talento. El ejemplo más relevante de esta categoría de redes sociales es LinkedIn.com, pero redes como Facebook y Twitter también son utilizadas para la búsqueda de empleos.
+  \linebreak
+  \linebreak
+  \textbf{Ventajas:} 
+  \begin{itemize}
+    \item  Son la opción que genera un menor costo para las empresas, pues en muchas ocasiones son gratuitas y cuando requieren algún pago este es reducido e independiente del número de aspirantes que se esté buscando
+    \item  Al ser parte de una red que regularmente incluye a personas que se conocen en el mundo físico, la información de estas redes suele ser más confiable que en el caso de los “marketplaces”
+    \item Las redes sociales tienen más usuarios que cualquier otro tipo de plataforma, por lo que el conjunto de personas a las que se alcanza es el más grande de entre todas las categorías
+  \end{itemize}
+
+
+
+  \textbf{Desventajas}
+  \begin{itemize}
+    \item Estas plataformas cuentan con diversas funcionalidades adicionales a la búsqueda de empleo, por lo que resultan confusas y poco eficientes para un usuario cuyo único objetivo es encontrar un empleo o buscar personas en busca de empleos
+    \item  Debido a las restricciones de privacidad que se configuran por omisión en estas redes sociales, suele resultar complicado obtener acceso a todas las personas que podrían estar interesadas en una vacante
+    \item Cada usuario decide de manera individual qué campos de información incluir en su perfil, por lo que resulta complicado hacer una comparación objetiva entre las opciones disponibles.
+  \end{itemize}
+
+
+
+
+    \item[$\blacksquare$] 
+    \begin{flushleft}
+    \textbf{Herramientas de análisis multidimensional}
+    \end{flushleft}
+    \linebreak
+  Esta categoría ataca el problema desde una posición distinta a la de las dos anteriores, pues no son una solución integral de búsqueda de talento/empleo. Los desarrollos en esta categoría tienen como objetivo ayudar a las empresas a evaluar candidatos con base en mecanismos novedosos que permitan una mayor efectividad en la predicción de éxito futuro de un candidato particular para una vacante dada. La característica común de esta categoría es que son sistemas que utilizan datos de las aspirantes y de las vacantes y los procesan utilizando técnicas computacionales y estadísticas para procesarlos y obtener resultados a los que un agente humano no tendría acceso. En este campo hay un gran número de empresas y grupos de investigación.
+  Dos ejemplos relevantes son: Pymetrics, que utiliza juegos inspirados en principios de neurociencia para evaluar compatibilidad entre un empleado y una vacante y DeeperSense, que utiliza inteligencia artificial para evaluar candidatos con base en rasgos de personalidad.
+  \linebreak
+  \linebreak
+  \textbf{Ventajas:} 
+  \begin{itemize}
+    \item  Permiten una evaluación objetiva de un candidato dado en relación con todos los demás candidatos evaluados
+    \item  Dado que la información se genera con cuestionarios homogéneos y no se recae en datos provistos por las aspirantes, la información resultante es relativamente más confiable
+    \item Evaluación de ambos lados de la transacción permite estimar la idoneidad del candidato para la vacante particular
+  \end{itemize}
+
+
+  \textbf{Desventajas}
+  \begin{itemize}
+    \item Bajo su implementación actual, no resuelve el problema de la falta de información para las aspirantes, pues solo se evalúa a las aspirantes que ya iniciaron un proceso de aplicación para la vacante dada
+    \item  Los algoritmos de evaluación resultan difíciles de auditar en caso de mal funcionamiento
+    \item Los algoritmos son desarrollados de forma particular para cada empresa, por lo que su costo es elevado y muchas empresas no están dispuestas a invertir en ellos
+  \end{itemize}
+
+
+  \end{itemize}
+
